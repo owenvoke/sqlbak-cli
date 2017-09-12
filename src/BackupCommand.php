@@ -56,7 +56,7 @@ class BackupCommand extends Command
         } elseif ($this->validateInput($input)) {
 
         } else {
-            throw new \Exception('No config parameters provided.');
+            throw new \Exception('Missing required config parameters.');
         }
 
         $username = $input->getOption('username') ?? $this->config->username ?? null;
