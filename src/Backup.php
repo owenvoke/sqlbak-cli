@@ -76,17 +76,17 @@ class Backup
         $results = [];
         if (!$suffix) {
             $suffix = date('Y-m-d');
-            foreach ($this->databases as $database) {
-                $results[] = [
-                    $database,
-                    $boolAsString ? $this->backup($database, $suffix) : ($this->backup($database, $suffix) ? 'true' : 'false'),
-                ];
-            }
-
-            return $results;
         }
 
-        throw new \Exception('...');
+        foreach ($this->databases as $database) {
+            $result = $this->backup($database, $suffix);
+            $results[] = [
+                $database,
+                $boolAsString ? $result : $result ? 'true' : 'false',
+            ];
+        }
+
+        return $results;
     }
 
     /**
@@ -118,7 +118,7 @@ class Backup
 
             return ($bytes > 0);
         } else {
-            throw new \Exception('...');
+            throw new \Exception('An error occurred while backing up the database "' . $name . '"');
         }
 
     }
