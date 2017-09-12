@@ -4,8 +4,7 @@
   "minimum-stability": "stable",
   "license": "MIT",
   "require": {
-    "symfony/console": "^3.3.9",
-    "symfony/process": "^3.3.9",
+    "symfony/console": "^3.3.8",
     "php": "^7.1.0"
   },
   "autoload": {
