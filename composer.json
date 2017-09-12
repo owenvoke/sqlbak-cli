@@ -1,0 +1,10 @@
+{
+  "name": "pxgamer/sqlbak-cli",
+  "description": "A CLI script for backing up MySQL databases.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "require": {
+    "symfony/console": "^3.3.9",
+    "php": "^7.1.0"
+  }
+}
