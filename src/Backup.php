@@ -2,6 +2,10 @@
 
 namespace pxgamer\SQLBak;
 
+/**
+ * Class Backup
+ * @package pxgamer\SQLBak
+ */
 class Backup
 {
     /**
@@ -40,7 +44,9 @@ class Backup
     }
 
     /**
-     * @param $name
+     * Add a database to the backup list
+     *
+     * @param string $name
      * @return bool
      */
     public function addDatabase($name)
@@ -53,7 +59,9 @@ class Backup
     }
 
     /**
-     * @param $name
+     * Remove a database from the backup list
+     *
+     * @param string $name
      * @return bool
      */
     public function removeDatabase($name)
@@ -66,7 +74,9 @@ class Backup
     }
 
     /**
-     * @param null $suffix
+     * Execute the backup for all databases in array
+     *
+     * @param null|string $suffix
      * @param bool $boolAsString
      * @return array
      * @throws \Exception
@@ -90,6 +100,8 @@ class Backup
     }
 
     /**
+     * Backup and Gzip a database
+     *
      * @param string $name
      * @param string $suffix
      * @return bool

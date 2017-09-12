@@ -92,6 +92,8 @@ class BackupCommand extends Command
     }
 
     /**
+     * Validate the provided inputs (if no config is provided)
+     *
      * @param InputInterface $input
      * @return bool
      */
