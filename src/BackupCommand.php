@@ -98,8 +98,7 @@ class BackupCommand extends Command
     private function validateInput($input)
     {
         if (
-            $input->getOption('dsn')
-            && $input->getOption('username')
+            $input->getOption('username')
             && $input->getOption('password')
             && $input->getOption('databases')
         ) {
