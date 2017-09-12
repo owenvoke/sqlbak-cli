@@ -6,5 +6,6 @@ if (file_exists(__DIR__ . '/../../../autoload.php')) {
     require __DIR__ . '/../vendor/autoload.php';
 }
 $app = new Symfony\Component\Console\Application('SQLBak', '1.0.0');
-$app->setDefaultCommand(new \pxgamer\SQLBak\BackupCommand());
+$app->add(new \pxgamer\SQLBak\BackupCommand());
+$app->setDefaultCommand('backup');
 $app->run();
