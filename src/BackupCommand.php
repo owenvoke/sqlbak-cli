@@ -33,12 +33,44 @@ class BackupCommand extends Command
         $this
             ->setName('backup')
             ->setDescription('Backup an array of databases.')
-            ->addOption('config', 'c', InputOption::VALUE_OPTIONAL, 'Path to a configuration file.')
-            ->addOption('username', 'u', InputOption::VALUE_OPTIONAL, 'The username for running the backups.')
-            ->addOption('password', 'p', InputOption::VALUE_OPTIONAL, 'The password for running the backups.')
-            ->addOption('outputDirectory', 'o', InputOption::VALUE_OPTIONAL, 'A directory for outputting the backups.')
-            ->addOption('compress', null, InputOption::VALUE_OPTIONAL, 'Choose whether to compress the SQL files.', true)
-            ->addOption('databases', 'd', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'A list of databases.', []);
+            ->addOption(
+                'config',
+                'c',
+                InputOption::VALUE_OPTIONAL,
+                'Path to a configuration file.'
+            )
+            ->addOption(
+                'username',
+                'u',
+                InputOption::VALUE_OPTIONAL,
+                'The username for running the backups.'
+            )
+            ->addOption(
+                'password',
+                'p',
+                InputOption::VALUE_OPTIONAL,
+                'The password for running the backups.'
+            )
+            ->addOption(
+                'outputDirectory',
+                'o',
+                InputOption::VALUE_OPTIONAL,
+                'A directory for outputting the backups.'
+            )
+            ->addOption(
+                'compress',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Choose whether to compress the SQL files.',
+                true
+            )
+            ->addOption(
+                'databases',
+                'd',
+                InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+                'A list of databases.',
+                []
+            );
     }
 
     /**
@@ -54,7 +86,6 @@ class BackupCommand extends Command
         if ($input->getOption('config')) {
             $this->config = new Config($input->getOption('config'));
         } elseif ($this->validateInput($input)) {
-
         } else {
             throw new \Exception('Missing required config parameters.');
         }
@@ -99,8 +130,7 @@ class BackupCommand extends Command
      */
     private function validateInput($input)
     {
-        if (
-            $input->getOption('username')
+        if ($input->getOption('username')
             && $input->getOption('password')
             && $input->getOption('databases')
         ) {

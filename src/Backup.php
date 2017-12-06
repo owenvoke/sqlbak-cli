@@ -109,29 +109,29 @@ class Backup
      */
     protected function backup(string $name, string $suffix)
     {
-        if (!is_dir($this->options['outputDirectory'] . DIRECTORY_SEPARATOR . $suffix)) {
-            mkdir($this->options['outputDirectory'] . DIRECTORY_SEPARATOR . $suffix);
+        if (!is_dir($this->options['outputDirectory'].DIRECTORY_SEPARATOR.$suffix)) {
+            mkdir($this->options['outputDirectory'].DIRECTORY_SEPARATOR.$suffix);
         }
 
         $cmd = 'mysqldump' .
-               ' -u ' . $this->username .
-               ' -p' . $this->password .
-               ' ' . $name .
-               ' > ' . $this->options['tmpPath'] . DIRECTORY_SEPARATOR . $name . '.sql';
+               ' -u '.$this->username .
+               ' -p'.$this->password .
+               ' '.$name .
+               ' > '.$this->options['tmpPath'].DIRECTORY_SEPARATOR.$name.'.sql';
         exec($cmd, $result, $status);
 
         if ($status === 0) {
             $gz = gzopen(
-                $this->options['outputDirectory'] . DIRECTORY_SEPARATOR . $suffix . DIRECTORY_SEPARATOR . $name . '.sql.gz',
+                $this->options['outputDirectory'].DIRECTORY_SEPARATOR.$suffix .
+                DIRECTORY_SEPARATOR.$name.'.sql.gz',
                 $this->options['compress'] ? 'w9' : 'w'
             );
 
-            $bytes = gzwrite($gz, file_get_contents($this->options['tmpPath'] . DIRECTORY_SEPARATOR . $name . '.sql'));
+            $bytes = gzwrite($gz, file_get_contents($this->options['tmpPath'].DIRECTORY_SEPARATOR.$name.'.sql'));
 
             return ($bytes > 0);
         } else {
-            throw new \Exception('An error occurred while backing up the database "' . $name . '"');
+            throw new \Exception('An error occurred while backing up the database "'.$name.'"');
         }
-
     }
 }
